@@ -46,5 +46,4 @@ npm run dev
 ```
 
 5. **Your Development Server is live at**
-http://localhost:5173 - Vite &&
-http://localhost:3000 - JSON Server
+http://localhost:5173 - Vite && http://localhost:3000 - JSON Server
