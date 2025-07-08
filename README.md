@@ -1,12 +1,50 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Student Management System
 
-Currently, two official plugins are available:
+A responsive and fully functional **Student Management System** built with **React**, **Tailwind CSS**, and **JSON Server**. It allows you to add, edit, delete, hide/unhide, and search students. The app simulates a real-world frontend-backend interaction using a mock REST API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+##  Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-  Add, Edit, Delete students
+-  Real-time search by name, student number, or email
+-  Toggle visibility (hide/unhide) for each student
+-  JSON Server as a dummy backend
+-  Persistent scroll position on page reload
+-  Clean and modern UI using Tailwind CSS
+
+---
+
+##  Tech Stack
+
+- **Frontend**: React, Tailwind CSS, Axios
+- **Backend (Mock API)**: JSON Server
+
+---
+
+##  Getting Started
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/Ayush-Verma34/Demo_DVertex-AyushVerma.git
+cd Demo_DVertex
+```
+2. **Install dependencies**
+ ```bash
+npm install
+```
+
+3. **Start the JSON server(dummy api)**
+```bash
+npm run api
+```
+
+4. **Start the development server**
+```bash
+npm run dev
+```
+
+5. **Your Development Server is live at**
+http://localhost:5173 - Vite
+http://localhost:3000 - JSON Server
