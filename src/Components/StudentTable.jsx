@@ -9,8 +9,8 @@ const StudentTable = ({ students, toggleHide, deleteStudent, updateStudent }) =>
   const [editingStudent, setEditingStudent] = useState(null)
   return (
     <div className='w-full bg-white shadow rounded p-2'>
-      <table className='w-full shadow rounded table-fixed'>
-        <thead className="bg-gray-200 text-center">
+      <table className='w-full shadow rounded'>
+        <thead className="bg-gray-300 text-center">
           <tr>
             <th className="p-2 w-8 md:w-20">S. No.</th>
             <th className="p-2">Name</th>
@@ -29,22 +29,27 @@ const StudentTable = ({ students, toggleHide, deleteStudent, updateStudent }) =>
               <td className="p-2 text-center bg-gray-100 overflow-y-auto">{s.email}</td>
               <td className="p-2 text-center bg-gray-100">{s.fees}</td>
               <td className='p-2 text-center bg-gray-100 space-x-2'>
-                <button
+                {!s.hidden&&(
+                  <button
                   type='button' onClick={() => setEditingStudent(s)}
                   className='px-3 py-1 bg-green-600 rounded'>
                   <FaUserEdit className='w-5 h-5 text-amber-50' />
                 </button>
+                )
+                }
                 <button
                   type='button' onClick={() => toggleHide(s.id)}
                   className='px-3 py-1 bg-yellow-600 rounded '>
                   {s.hidden ? <BiSolidShow className='h-5 w-5 text-amber-50' /> : <BiSolidHide className='h-5 w-5 text-amber-50' />}
                 </button>
-                <button
+                {!s.hidden&&(
+                  <button
                   type='button'
                   onClick={() => deleteStudent(s.id)}
-                  className='px-3 py-1 bg-red-600 rounded'>
+                  className='px-3 py-1 bg-red-600 rounded mr-2'>
                   <MdDeleteForever className='h-5 w-5 text-amber-50' />
                 </button>
+                )}
               </td>
             </tr>
           ))}

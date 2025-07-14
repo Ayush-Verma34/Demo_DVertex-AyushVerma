@@ -14,22 +14,22 @@ const App = () => {
   const [students, setStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-useEffect(() => {
-  const saveScroll = () => {
-    localStorage.setItem("scroll-position", window.scrollY.toString());
-  };
-  window.addEventListener("scroll", saveScroll);
-  return () => window.removeEventListener("scroll", saveScroll);
-}, []);
+  useEffect(() => {
+    const saveScroll = () => {
+      localStorage.setItem("scroll-position", window.scrollY.toString());
+    };
+    window.addEventListener("scroll", saveScroll);
+    return () => window.removeEventListener("scroll", saveScroll);
+  }, []);
 
-useEffect(() => {
-  const savedY = localStorage.getItem("scroll-position");
-  if (savedY) {
-    setTimeout(() => {
-      window.scrollTo(0, parseInt(savedY));
-    }, 100);
-  }
-}, []);
+  useEffect(() => {
+    const savedY = localStorage.getItem("scroll-position");
+    if (savedY) {
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedY));
+      }, 100);
+    }
+  }, []);
 
   useEffect(() => {
     getStudents().then((res) => setStudents(res.data));
@@ -67,11 +67,17 @@ useEffect(() => {
     handleUpdate(id, { ...student, hidden: !student.hidden });
   };
 
+  const [addingStudent, setAddingStudent] = useState(false);
+
   return (
     <div className="md:p-6 p-2 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold text-center mb-6">Student Management</h1>
-      <SearchStudent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <StudentForm addStudent={addStudent} />
+      <div className="flex items-center justify-between w-full p-3 m-auto gap-4">
+        <div className="w-[80%] flex items-center gap-4 ">
+          <h1 className="text-xl md:text-3xl font-bold">Student Management</h1>
+          <SearchStudent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        </div>
+        <button onClick={()=>setAddingStudent(true)} className="bg-blue-500 md:bg-blue-400 text-white px-2 py-1 md:px-4 md:py-2 rounded md:hover:bg-blue-600">Add Student</button>
+      </div>
       <StudentTable
         students={students.filter((s) =>
           s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -82,7 +88,9 @@ useEffect(() => {
         deleteStudent={handleDelete}
         toggleHide={toggleHide}
       />
-
+      {addingStudent && (
+        <StudentForm addStudent={addStudent} onClose={()=>setAddingStudent(false)}/>
+      )}
 
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { FiX } from "react-icons/fi";
 
-const StudentAddForm = ({ addStudent }) => {
+const StudentAddForm = ({ addStudent,onClose }) => {
   const [formData, setFormData] = useState({ name: "", studentNo: "", email: "", fees: "" });
 
   const handleSubmit = (e) => {
@@ -17,26 +18,33 @@ const StudentAddForm = ({ addStudent }) => {
     setFormData({ studentNo: "", name: "", email: "", fees: "" })
   }
   return (
-    <div className='w-full py-3'>
-      <div className='bg-gray-200 md:w-[700px] w-auto p-3 m-auto'>
-        <h2 className='font-semibold text-center text-2xl'>
-          Add Students
-        </h2>
-        <form className='m-3 flex flex-col w-auto justify-center space-y-2.5' >
-          <input type="text" name='name' placeholder='Students Name' className='p-2 rounded border' value={formData.name} onChange={handleChange} />
-          <input type='number' name='studentNo' placeholder='Student No' className='p-2 rounded border' value={formData.studentNo} onChange={handleChange} />
-          <input name='email' type='email' placeholder='Students EmailId' className='p-2 rounded border' value={formData.email} onChange={handleChange} />
-          <input name='fees' type='number' placeholder='Students Fees' className='p-2 rounded border' value={formData.fees} onChange={handleChange} />
+    <div className='fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center w-auto'>
+      <div className='bg-gray-200 md:w-[400px] px-8 py-6 m-auto rounded-xl'>
+        <div className='flex items-center justify-between mb-6'>
+          <h2 className='font-semibold text-2xl '>
+            Add Students
+          </h2>
+          <button onClick={onClose} className='bg-gray-300 p-2 rounded-full hover:bg-gray-500'><FiX className='text-xl' /></button>
+        </div>
+        <form className='flex flex-col w-auto justify-center space-y-2.5 mb-6'>
+          <label className='mb-1.5'>Students Name:</label>
+          <input type="text" name='name' placeholder='Enter Name' className='p-2 rounded-md border mb-3' value={formData.name} onChange={handleChange} />
+          <label className='mb-1.5'>Students No.:</label>
+          <input type='number' name='studentNo' placeholder='Enter Student No' className='p-2 rounded-md border mb-3' value={formData.studentNo} onChange={handleChange} />
+          <label className='mb-q.5'>Students Emaild:</label>
+          <input name='email' type='email' placeholder='Enter EmailId' className='p-2 rounded-md border mb-3' value={formData.email} onChange={handleChange} />
+          <label className='mb-q.5'>Students Fees:</label>
+          <input name='fees' type='number' placeholder='Enter Fees' className='p-2 rounded-md border' value={formData.fees} onChange={handleChange} />
         </form>
-        <div className='text-center space-x-2.5'>
+        <div className='flex items-center justify-between'>
           <button
             type="submit"
             onClick={handleSubmit}
-            className="bg-blue-500 md:bg-blue-400 text-white px-4 py-2 rounded md:hover:bg-blue-600">Add
+            className="w-20 bg-blue-500 md:bg-blue-400 text-white py-2 rounded-lg md:hover:bg-blue-600">Add
           </button>
           <button
             onClick={clearData}
-            className="bg-red-500 md:bg-red-400 text-white px-4 py-2 rounded md:hover:bg-red-600"
+            className="w-20 bg-red-500 md:bg-red-400 text-white py-2 rounded-lg md:hover:bg-red-600"
           >
             Cancel
           </button>

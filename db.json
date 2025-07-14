@@ -3,7 +3,7 @@
     {
       "id": "101",
       "studentNo": "101",
-      "name": "Divya Yadav",
+      "name": "Vikas Gautam",
       "email": "divya.yadav101@example.com",
       "fees": "37363",
       "hidden": false
@@ -14,7 +14,7 @@
       "name": "Rohit Srivastava",
       "email": "rohit.srivastava102@example.com",
       "fees": "82711",
-      "hidden": true
+      "hidden": false
     },
     {
       "id": "103",
@@ -214,7 +214,7 @@
       "name": "Anjali Khan",
       "email": "anjali.khan127@example.com",
       "fees": "51788",
-      "hidden": true
+      "hidden": false
     },
     {
       "id": "128",
@@ -278,7 +278,7 @@
       "name": "Pooja Khan",
       "email": "pooja.khan135@example.com",
       "fees": "79865",
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "136",
@@ -286,7 +286,7 @@
       "name": "Vikas Srivastava",
       "email": "vikas.srivastava136@example.com",
       "fees": "29843",
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "137",
@@ -393,19 +393,19 @@
       "hidden": false
     },
     {
-      "id": "150",
-      "studentNo": "150",
-      "name": "Vikas Bansal",
-      "email": "vikas.bansal150@example.com",
-      "fees": "93054",
-      "hidden": false
-    },
-    {
       "id": "260",
       "name": "Ayush Verma",
       "studentNo": "260",
       "email": "adsf@wrfg",
       "fees": "2232424",
+      "hidden": false
+    },
+    {
+      "id": "202",
+      "name": "Ayush Verma",
+      "studentNo": "202",
+      "email": "adgasjh@sj",
+      "fees": "20344",
       "hidden": false
     }
   ]
