@@ -25,7 +25,7 @@ const StudentAddForm = ({ addStudent,onClose }) => {
             Add Students
           </h2>
           <button onClick={onClose} 
-          className='bg-gray-300 p-2 rounded-full hover:bg-gray-500'><FiX className='text-xl' /></button>
+          className='bg-gray-300 p-2 rounded-full hover:bg-gray-500'><FiX className=' md:text-xl' /></button>
         </div>
         <form className='flex flex-col w-auto justify-center space-y-2.5 mb-6'>
           <label className='mb-1.5'>Students Name:</label>

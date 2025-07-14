@@ -1,6 +1,6 @@
 import "./App.css"
 import { useEffect, useState } from "react";
-import { FaFilter } from "react-icons/fa";
+import { LuUserSearch, LuUserPlus } from "react-icons/lu";
 import StudentForm from "./Components/StudentAddForm";
 import StudentTable from "./Components/StudentTable";
 import {
@@ -69,17 +69,30 @@ const App = () => {
     handleUpdate(id, { ...student, hidden: !student.hidden });
   };
 
-
+  const [searchOpen, setSearchOpen] = useState(false)
 
   return (
-    <div className="w-full md:p-6 p-2 bg-gray-100 min-h-screen">
-      <div className="flex items-center justify-between p-3 m-auto gap-4 mb-8">
-        <div className="w-[80%] flex items-center  gap-4 ">
-          <h1 className="text-xl md:text-3xl font-bold">Student Management</h1>
-          <SearchStudent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+    <div className="w-full md:px-6 p-4 bg-gray-100 min-h-screen">
+      <div className="flex items-center justify-between p-3 pb-6 m-auto gap-4 mb-8 border-b-4">
+        <h1 className="text-xl md:text-3xl font-bold text-cyan-900">Student Management</h1>
+        <div className="w-auto flex items-center justify-end gap-4">
+          <button
+            onClick={() => setSearchOpen(prev => !prev)}
+            className="flex bg-gray-300 hover:bg-gray-400 p-2 px-4 rounded-md shadow-lg shadow-gray-200 gap-2 border-2 border-gray-500">
+            <LuUserSearch className="h-5 w-5 md:h-6 md:w-6" />
+            <span className="hidden md:flex items-center text-md">Search</span>
+          </button>
+          <button
+            onClick={() => setAddingStudent(true)}
+            className="flex bg-blue-500 hover:bg-blue-600 text-white p-2 px-4 rounded-md shadow-lg shadow-blue-200 gap-2 border-2 border-blue-700">
+            <LuUserPlus className="h-5 w-5 md:h-6 md:w-6" />
+            <span className="hidden md:flex">AddStudent</span>
+          </button>
         </div>
-        <button onClick={() => setAddingStudent(true)} className="bg-blue-500 text-white px-2 py-1 md:px-4 md:py-2 rounded shadow-xl shadow-blue-200 md:hover:bg-blue-600">Add Student</button>
       </div>
+      {searchOpen && (
+        <SearchStudent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      )}
       <StudentTable
         students={students.filter((s) =>
           s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
