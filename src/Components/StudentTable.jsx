@@ -23,7 +23,6 @@ const StudentTable = ({ students, toggleHide, deleteStudent, updateStudent }) =>
             <th className="py-3">Fees</th>
             <th className='py-3 space-x-2'><span>Actions</span>
               <button
-                type='button'
                 onClick={() => setIsHidden(prev => !prev)}
                 className='px-3 py-1 bg-gray-500 hover:bg-gray-600 rounded border border-gray-600'>
                 {isHidden ? <BiSolidShow title='Show Visible Students' className='h-5 w-5 text-amber-50' /> : <BiSolidHide title='Show Hidden Students' className='h-5 w-5 text-amber-50' />}
@@ -35,7 +34,7 @@ const StudentTable = ({ students, toggleHide, deleteStudent, updateStudent }) =>
           {students
             .filter((s) => isHidden ? s.hidden : !s.hidden)
             .map((s, index) => (
-              <tr key={s.id} className={s.hidden ? "opacity-70 bg-gray-200 hover:bg-gray-100" : "opacity-100 bg-gray-200 hover:bg-gray-100 hover:text-amber-900 border-b border-gray-300"}>
+              <tr key={s.id} className={s.hidden ? "opacity-70 bg-gray-200 hover:bg-gray-100 border-b border-gray-300" : "opacity-100 bg-gray-200 hover:bg-gray-100 hover:text-amber-900 border-b border-gray-300"}>
                 <td className="py-3 text-center">{index + 1}</td>
                 <td className="py-3 text-center">{s.name}</td>
                 <td className="py-3 text-center">{s.studentNo}</td>
