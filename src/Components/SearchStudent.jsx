@@ -2,7 +2,7 @@ import React from 'react'
 
 const SearchStudent = ({searchQuery, setSearchQuery}) => {
   return (
-    <div className="w-auto md:w-84 flex justify-center">
+    <div className="w-84">
       <input
         type="text"
         placeholder="🔍 Search by name, student no. or email"

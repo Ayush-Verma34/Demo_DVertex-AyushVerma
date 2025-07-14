@@ -5,54 +5,70 @@ import { BiSolidHide, BiSolidShow } from "react-icons/bi";
 import { MdDeleteForever } from "react-icons/md";
 
 const StudentTable = ({ students, toggleHide, deleteStudent, updateStudent }) => {
-  // console.log(students);
+
   const [editingStudent, setEditingStudent] = useState(null)
+  const [isHidden, setIsHidden] = useState(false)
+
+
   return (
-    <div className='w-full bg-white shadow rounded p-2'>
-      <table className='w-full shadow rounded'>
+    <div className='bg-white shadow rounded p-2'>
+      <table className='w-full shadow rounded-lg table-fixed'>
         <thead className="bg-gray-300 text-center">
           <tr>
-            <th className="p-2 w-8 md:w-20">S. No.</th>
-            <th className="p-2">Name</th>
-            <th className="p-2 overflow-auto">Student No.</th>
-            <th className="p-2">Email</th>
-            <th className="p-2">Fees</th>
-            <th className="p-2 overflow-auto">Actions</th>
+            <th className="py-3 w-10 md:w-20">S. No.</th>
+            <th className="py-3">Name</th>
+            <th className="py-3 overflow-auto">Student No.</th>
+            <th className="py-3">Email</th>
+            <th className="py-3">Fees</th>
+            <th className='py-3 space-x-2'><span>Actions</span>
+              <button
+                type='button'
+                onClick={() => setIsHidden(prev => !prev)}
+                className='px-3 py-1 bg-gray-500 hover:bg-gray-600 rounded'>
+                {isHidden ? <BiSolidShow title='Show Visible Students' className='h-5 w-5 text-amber-50' /> : <BiSolidHide title='Show Hidden Students' className='h-5 w-5 text-amber-50' />}
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody>
-          {students.map((s, index) => (
-            <tr key={s.id} className={s.hidden ? "opacity-30" : ""}>
-              <td className="p-2 text-center bg-gray-100">{index + 1}</td>
-              <td className="p-2 text-center bg-gray-100">{s.name}</td>
-              <td className="p-2 text-center bg-gray-100">{s.studentNo}</td>
-              <td className="p-2 text-center bg-gray-100 overflow-y-auto">{s.email}</td>
-              <td className="p-2 text-center bg-gray-100">{s.fees}</td>
-              <td className='p-2 text-center bg-gray-100 space-x-2'>
-                {!s.hidden&&(
+          {students
+            .filter((s) => isHidden ? s.hidden : !s.hidden)
+            .map((s, index) => (
+              <tr key={s.id} className={s.hidden ? "opacity-70 bg-gray-200 hover:bg-gray-100" : "opacity-100 bg-gray-200 hover:bg-gray-100 hover:text-amber-900"}>
+                <td className="py-3 text-center">{index + 1}</td>
+                <td className="py-3 text-center">{s.name}</td>
+                <td className="py-3 text-center">{s.studentNo}</td>
+                <td className="py-3 text-center overflow-y-auto">{s.email}</td>
+                <td className="py-3 text-center">{s.fees}</td>
+                <td className='py-3 text-center space-x-2'>
+                  {!s.hidden && (
+                    <button
+                      type='button'
+                      title='Edit Details'
+                      onClick={() => setEditingStudent(s)}
+                      className='px-3 py-1 bg-green-600 hover:bg-green-700 rounded'>
+                      <FaUserEdit className='w-5 h-5 text-amber-50' />
+                    </button>
+                  )
+                  }
                   <button
-                  type='button' onClick={() => setEditingStudent(s)}
-                  className='px-3 py-1 bg-green-600 rounded'>
-                  <FaUserEdit className='w-5 h-5 text-amber-50' />
-                </button>
-                )
-                }
-                <button
-                  type='button' onClick={() => toggleHide(s.id)}
-                  className='px-3 py-1 bg-yellow-600 rounded '>
-                  {s.hidden ? <BiSolidShow className='h-5 w-5 text-amber-50' /> : <BiSolidHide className='h-5 w-5 text-amber-50' />}
-                </button>
-                {!s.hidden&&(
-                  <button
-                  type='button'
-                  onClick={() => deleteStudent(s.id)}
-                  className='px-3 py-1 bg-red-600 rounded mr-2'>
-                  <MdDeleteForever className='h-5 w-5 text-amber-50' />
-                </button>
-                )}
-              </td>
-            </tr>
-          ))}
+                    type='button'
+                    onClick={() => toggleHide(s.id)}
+                    className='px-3 py-1 bg-yellow-600 hover:bg-yellow-700 rounded '>
+                    {s.hidden ? <BiSolidShow title="Unhide" className='h-5 w-5 text-amber-50' /> : <BiSolidHide title='Hide' className='h-5 w-5 text-amber-50' />}
+                  </button>
+                  {!s.hidden && (
+                    <button
+                      type='button'
+                      title='Delete Permanently'
+                      onClick={() => deleteStudent(s.id)}
+                      className='px-3 py-1 bg-red-600 hover:bg-red-700 rounded mr-2'>
+                      <MdDeleteForever className='h-5 w-5 text-amber-50' />
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
       {editingStudent && (

@@ -1,5 +1,6 @@
 import "./App.css"
 import { useEffect, useState } from "react";
+import { FaFilter } from "react-icons/fa";
 import StudentForm from "./Components/StudentAddForm";
 import StudentTable from "./Components/StudentTable";
 import {
@@ -13,6 +14,7 @@ import SearchStudent from "./Components/SearchStudent";
 const App = () => {
   const [students, setStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [addingStudent, setAddingStudent] = useState(false);
 
   useEffect(() => {
     const saveScroll = () => {
@@ -67,16 +69,16 @@ const App = () => {
     handleUpdate(id, { ...student, hidden: !student.hidden });
   };
 
-  const [addingStudent, setAddingStudent] = useState(false);
+
 
   return (
-    <div className="md:p-6 p-2 bg-gray-100 min-h-screen">
-      <div className="flex items-center justify-between w-full p-3 m-auto gap-4">
-        <div className="w-[80%] flex items-center gap-4 ">
+    <div className="w-full md:p-6 p-2 bg-gray-100 min-h-screen">
+      <div className="flex items-center justify-between p-3 m-auto gap-4 mb-8">
+        <div className="w-[80%] flex items-center  gap-4 ">
           <h1 className="text-xl md:text-3xl font-bold">Student Management</h1>
           <SearchStudent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         </div>
-        <button onClick={()=>setAddingStudent(true)} className="bg-blue-500 md:bg-blue-400 text-white px-2 py-1 md:px-4 md:py-2 rounded md:hover:bg-blue-600">Add Student</button>
+        <button onClick={() => setAddingStudent(true)} className="bg-blue-500 text-white px-2 py-1 md:px-4 md:py-2 rounded shadow-xl shadow-blue-200 md:hover:bg-blue-600">Add Student</button>
       </div>
       <StudentTable
         students={students.filter((s) =>
@@ -89,7 +91,7 @@ const App = () => {
         toggleHide={toggleHide}
       />
       {addingStudent && (
-        <StudentForm addStudent={addStudent} onClose={()=>setAddingStudent(false)}/>
+        <StudentForm addStudent={addStudent} onClose={() => setAddingStudent(false)} />
       )}
 
     </div>

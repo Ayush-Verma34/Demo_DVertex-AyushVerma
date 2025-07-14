@@ -18,13 +18,14 @@ const StudentAddForm = ({ addStudent,onClose }) => {
     setFormData({ studentNo: "", name: "", email: "", fees: "" })
   }
   return (
-    <div className='fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center w-auto'>
+    <div className='fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center w-full'>
       <div className='bg-gray-200 md:w-[400px] px-8 py-6 m-auto rounded-xl'>
         <div className='flex items-center justify-between mb-6'>
-          <h2 className='font-semibold text-2xl '>
+          <h2 className='font-semibold text-2xl'>
             Add Students
           </h2>
-          <button onClick={onClose} className='bg-gray-300 p-2 rounded-full hover:bg-gray-500'><FiX className='text-xl' /></button>
+          <button onClick={onClose} 
+          className='bg-gray-300 p-2 rounded-full hover:bg-gray-500'><FiX className='text-xl' /></button>
         </div>
         <form className='flex flex-col w-auto justify-center space-y-2.5 mb-6'>
           <label className='mb-1.5'>Students Name:</label>
