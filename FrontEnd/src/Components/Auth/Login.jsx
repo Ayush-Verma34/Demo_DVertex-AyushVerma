@@ -28,15 +28,12 @@ const Login = () => {
 
     return (
         <div className="w-full min-h-screen bg-gray-300 p-4 flex flex-col">
-            {/* Heading */}
             <div className="p-3 pb-6 m-auto mb-4 border-b-4 w-full">
                 <h1 className="text-xl md:text-3xl font-bold text-cyan-900 flex items-center">
-                    <img src="./../../public/icon.png" alt="icon"className='h-12 w-12 mr-2'/>
+                    <img src="./../../public/icon.png" alt="icon" className='h-12 w-12 mr-2' />
                     Student Management
                 </h1>
             </div>
-
-            {/* Form centered in remaining space */}
             <div className="flex-grow flex items-center justify-center">
                 <div className="bg-gray-100 md:w-[400px] px-8 py-6 rounded-xl">
                     <form
@@ -44,8 +41,6 @@ const Login = () => {
                         className="flex flex-col w-auto justify-center space-y-6 mb-8"
                     >
                         <h2 className="font-semibold text-2xl text-center mb-6">Login</h2>
-
-                        {/* Email field */}
                         <div className="flex flex-col">
                             <label htmlFor="email" className="mb-1">Email id:</label>
                             <input
@@ -65,12 +60,10 @@ const Login = () => {
                                 <div className="text-red-700 opacity-70">{errors.email.message}</div>
                             )}
                         </div>
-
-                        {/* Password field */}
                         <div className="flex flex-col mb-8">
                             <label htmlFor="password" className="mb-1">Password:</label>
                             <input
-                                type="text"
+                                type="password"
                                 id="password"
                                 {...register("password", {
                                     required: "Password is required",
@@ -86,8 +79,6 @@ const Login = () => {
                                 <div className="text-red-700 opacity-70">{errors.password.message}</div>
                             )}
                         </div>
-
-                        {/* Submit Button */}
                         <button
                             type="submit"
                             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
@@ -95,8 +86,6 @@ const Login = () => {
                             Login
                         </button>
                     </form>
-
-                    {/* Register Link */}
                     <p className="text-center">
                         Don't have an Account?
                         <Link to="/register" className="text-blue-800 ml-1">Create One</Link>
