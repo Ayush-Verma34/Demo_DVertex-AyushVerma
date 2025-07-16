@@ -4,10 +4,10 @@ const Student = require("../models/students");
 
 // Get all
 router.get("/", async (req, res) => {
-  const data = await StudentList.findOne();
+  const data = await Student.find();
   res.json(data);
-    
-  });
+
+});
 
 // Add new
 router.post("/", async (req, res) => {
@@ -17,16 +17,17 @@ router.post("/", async (req, res) => {
 });
 
 // Delete
-router.delete("/id", async (req, res) => {
-  await Student.deleteOne({ id: req.params.id });
+router.delete("/:id", async (req, res) => {
+  await Student.findOneAndDelete({ id: req.params.id });
   res.json({ success: true });
 });
 
 
 // Update
-router.put("/id", async (req, res) => {
-  const updated = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
+router.put("/:id", async (req, res) => {
+  const updated = await Student.findOneAndUpdate({ id: req.params.id }, req.body, { new: true });
   res.json(updated);
 });
+
 
 module.exports = router;

@@ -5,7 +5,8 @@ const studentSchema = new mongoose.Schema({
   name: String,
   email: String,
   fees: String,
-  hidden: Boolean
+  hidden: Boolean,
+  id: String,
 });
 
 module.exports = mongoose.model("Student", studentSchema);

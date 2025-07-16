@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FiX } from "react-icons/fi";
 
-const StudentAddForm = ({ addStudent,onClose }) => {
+const StudentAddForm = ({ addStudent, onClose }) => {
   const [formData, setFormData] = useState({ name: "", studentNo: "", email: "", fees: "" });
 
   const handleSubmit = (e) => {
@@ -9,6 +9,7 @@ const StudentAddForm = ({ addStudent,onClose }) => {
     if (formData.studentNo && formData.name && formData.email && formData.fees) {
       addStudent(formData);
       setFormData({ studentNo: "", name: "", email: "", fees: "" });
+      onClose();
     }
   };
   const handleChange = (e) => {
@@ -24,8 +25,8 @@ const StudentAddForm = ({ addStudent,onClose }) => {
           <h2 className='font-semibold text-2xl'>
             Add Students
           </h2>
-          <button onClick={onClose} 
-          className='bg-gray-300 p-2 rounded-full hover:bg-gray-500'><FiX className=' md:text-xl' /></button>
+          <button onClick={onClose}
+            className='bg-gray-300 p-2 rounded-full hover:bg-gray-500'><FiX className=' md:text-xl' /></button>
         </div>
         <form className='flex flex-col w-auto justify-center space-y-2.5 mb-6'>
           <label className='mb-1.5'>Students Name:</label>

@@ -38,7 +38,7 @@ const App = () => {
   }, []);
 
   const addStudent = async (student) => {
-    const exists = students.some((s) => s._id === student.studentNo);
+    const exists = students.some((s) => s.id === student.studentNo);
     if (exists) {
       alert("⚠️Student with same Student number already exists!");
       return;
@@ -46,6 +46,7 @@ const App = () => {
 
     const newStudent = {
       ...student,
+      id:student.studentNo,
       hidden: false
     };
 
@@ -53,19 +54,19 @@ const App = () => {
     setStudents([...students, res.data]);
   };
   // console.log(students);
-  const handleDelete = async (_id) => {
-    await deleteStudent(_id);
-    setStudents(students.filter((s) => s._id !== _id));
+  const handleDelete = async (id) => {
+    await deleteStudent(id);
+    setStudents(students.filter((s) => s.id !== id));
   };
 
-  const handleUpdate = async (_id, updated) => {
-    const res = await updateStudent(_id, updated);
-    setStudents(students.map((s) => (s._id === _id ? res.data : s)));
+  const handleUpdate = async (id, updated) => {
+    const res = await updateStudent(id, updated);
+    setStudents(students.map((s) => (s.id === id ? res.data : s)));
   };
 
-  const toggleHide = (_id) => {
-    const student = students.find((s) => s._id === _id);
-    handleUpdate(_id, { ...student, hidden: !student.hidden });
+  const toggleHide = (id) => {
+    const student = students.find((s) => s.id === id);
+    handleUpdate(id, { ...student, hidden: !student.hidden });
   };
 
   const [searchOpen, setSearchOpen] = useState(false)

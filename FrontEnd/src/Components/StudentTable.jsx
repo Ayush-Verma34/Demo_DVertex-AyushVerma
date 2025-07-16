@@ -53,7 +53,7 @@ const StudentTable = ({ students, toggleHide, deleteStudent, updateStudent }) =>
                   }
                   <button
                     type='button'
-                    onClick={() => toggleHide(s._id)}
+                    onClick={() => toggleHide(s.id)}
                     className='px-3 py-1 bg-yellow-600 hover:bg-yellow-700 rounded border border-yellow-800'>
                     {s.hidden ? <BiSolidShow title="Unhide" className='h-5 w-5 text-amber-50' /> : <BiSolidHide title='Hide' className='h-5 w-5 text-amber-50' />}
                   </button>
@@ -61,7 +61,7 @@ const StudentTable = ({ students, toggleHide, deleteStudent, updateStudent }) =>
                     <button
                       type='button'
                       title='Delete Permanently'
-                      onClick={() => deleteStudent(s._id)}
+                      onClick={() => deleteStudent(s.id)}
                       className='px-3 py-1 bg-red-600 hover:bg-red-700 rounded mr-2 border border-red-800'>
                       <MdDeleteForever className='h-5 w-5 text-amber-50' />
                     </button>
@@ -73,7 +73,7 @@ const StudentTable = ({ students, toggleHide, deleteStudent, updateStudent }) =>
       </table>
       {editingStudent && (
         <EditStudent student={editingStudent} onClose={() => setEditingStudent(null)} onSave={(updatedData) => {
-          updateStudent(editingStudent._id, updatedData);
+          updateStudent(editingStudent.id, updatedData);
           setEditingStudent(null);
         }} />
       )}
