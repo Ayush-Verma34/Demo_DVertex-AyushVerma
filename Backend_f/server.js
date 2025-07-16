@@ -1,13 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const cookieParser = require("cookie-parser")
 require("dotenv").config();
 
+
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/students", require("./routes/studentsRoutes"));
+
+app.use("/api/auth", require("./routes/userRoutes"));
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
