@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { addUser, loginUser } from '../../api/userApi';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
 
@@ -9,14 +9,16 @@ const Register = () => {
         handleSubmit,
         formState: { errors }
     } = useForm();
- 
+
+    const navigate = useNavigate();
+    
     const submitCall = async (data) => {
         try {
             const response = await addUser(data)
             await loginUser(data)
             if (response.status == 200) {
                 // alert(response.data.message)
-                <Navigate to="/landing"/>
+                navigate('/landing')
             }
         } catch (error) {
             alert(error.response.data.message)
