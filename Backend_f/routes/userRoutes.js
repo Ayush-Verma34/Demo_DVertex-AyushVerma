@@ -86,14 +86,14 @@ router.get('/verify', (req, res) => {
     const token = req.cookies.token;
 
     if (!token) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.status(400).json({ message: 'Unauthorized' });
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         res.status(200).json({ message: 'Authorized', user: decoded });
     } catch (err) {
-        return res.status(403).json({ message: 'Invalid token' });
+        return res.status(400).json({ message: 'Invalid token' });
     }
 });
 
