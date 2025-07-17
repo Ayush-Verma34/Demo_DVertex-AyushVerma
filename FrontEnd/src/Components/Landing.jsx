@@ -79,7 +79,7 @@ const Landing = () => {
             const response =await logoutUser()
 
             if (response.status == 200) {
-                alert(response.data.message)
+                // alert(response.data.message)
                 navigate("/login");
             }
         } catch (error) {

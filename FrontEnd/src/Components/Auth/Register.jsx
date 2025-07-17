@@ -16,7 +16,7 @@ const Register = () => {
             const response = await addUser(data)
             await loginUser(data)
             if (response.status == 200) {
-                alert(response.data.message)
+                // alert(response.data.message)
                 navigate("/landing");
             }
         } catch (error) {

@@ -7,13 +7,21 @@ export const addUser = async (userData) => {
 };
 
 export const loginUser = async (userData) => {
-  return await axios.post("http://localhost:5000/api/auth/login", userData,{
-    withCredentials:true
+  return await axios.post("http://localhost:5000/api/auth/login", userData, {
+    withCredentials: true
   });
 };
 
 export const logoutUser = async () => {
-  return await axios.post("http://localhost:5000/api/auth/logout",{},{
-    withCredentials:true
+  return await axios.post("http://localhost:5000/api/auth/logout", {}, {
+    withCredentials: true
   });
+};
+
+
+export const checkAuth = async () => {
+  const response = await axios.get('http://localhost:5000/api/auth/verify', {
+    withCredentials: true,
+  });
+  return response.data;
 };
