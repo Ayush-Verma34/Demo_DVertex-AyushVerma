@@ -21,8 +21,6 @@ const App = () => {
         </Routes>
       </div>
     </Router>
-    // <Landing/>
-
   );
 };
 
